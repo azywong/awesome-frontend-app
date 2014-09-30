@@ -1,0 +1,32 @@
+Connecting to database specified by database.yml
+  [1m[36m (11.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (18.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (1.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateQuizzes (20131016170409)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (3.0ms)[0m  [1mCREATE TABLE "quizzes" ("id" serial primary key, "name" character varying(255), "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20131016170409')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateQuestions (20131016170504)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (1.5ms)[0m  [1mCREATE TABLE "questions" ("id" serial primary key, "quiz_id" integer, "question" character varying(255), "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20131016170504')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateChoices (20131016170720)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (3.5ms)[0m  [1mCREATE TABLE "choices" ("id" serial primary key, "question_id" integer, "choice" character varying(255), "is_correct" boolean, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20131016170720')
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateSimpleSessions (20131016175859)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (1.7ms)[0m  [1mCREATE TABLE "simple_sessions" ("id" serial primary key, "session_key" character varying(255), "last_answered_question_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20131016175859')
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to AddNumCorrectAndNumIncorrectToSimpleSession (20131017022410)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.8ms)[0m  [1mALTER TABLE "simple_sessions" ADD COLUMN "num_correct" integer[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "simple_sessions" ADD COLUMN "num_incorrect" integer
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131017022410')[0m
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
