@@ -27,7 +27,3 @@ group :development, :test do
 end
 
 gem 'jquery-rails'
-
-
-# To use debugger
-gem 'debugger'
