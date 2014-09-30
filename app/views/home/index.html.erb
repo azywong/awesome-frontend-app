@@ -1,3 +1,13 @@
 <div ng-controller="QuizCtrl">
-  {{2+2}}
+  <p ng-repeat="status in answerStatus">
+    {{status}}
+  </p>
+  <h3>{{currentQuestion.question}}</h3>
+  <form>
+    <ul>
+      <li ng-repeat="choice in currentQuestion.choices"><input type="radio" ng-model="formData.answer" name="answer" value="{{choice.choice_id}}"> {{choice.choice}}
+      </li>
+    </ul>
+    <input type="submit" ng-click="submitAnswer(formData.answer)">Answer!</input>
+  </form>
 </div>
